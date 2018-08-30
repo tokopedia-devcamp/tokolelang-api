@@ -29,3 +29,32 @@ GET url://products
   ]
 }
 ```
+
+#### User
+```
+GET url://api/user/login/
+
+Return on no email address on database
+{
+    "code": 400,
+    "message": "email tidak terdaftar"
+}
+
+Return on wrong password
+{
+    "code": 400,
+    "message": "password salah"
+}
+
+Return on success
+{
+    "code": 200,
+    "message": "login success",
+    "data": {
+        "name": "Sebastion Mualim",
+        "email": "bastian@example.com",
+        "avatar": "https://cdn.iconscout.com/icon/free/png-512/avatar-372-456324.png",
+        "created_at": "2018-08-30 14:18:55",
+        "updated_at": "2018-08-30 14:18:55"
+    }
+}``

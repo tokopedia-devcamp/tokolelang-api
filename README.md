@@ -144,7 +144,7 @@ GET url:://tr/userid/:userid/:productid
     }, {...}
 ]
 
-###GET PRODUCT BIDDER LIST
+GET PRODUCT BIDDER LIST
 
 GET url:://tr/productid/@id
 [

@@ -91,6 +91,7 @@ class User extends MasterApi {
                 "code" => 200,
                 "message" => "login success",
                 "data" => [
+                    "id" => $row["id"],
                     "name" => $row["name"],
                     "email" => $row["email"],
                     "avatar" => $row["avatar"],

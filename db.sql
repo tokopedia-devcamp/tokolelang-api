@@ -1,0 +1,94 @@
+-- NAME DATABASE : tokolelang
+
+CREATE TABLE users (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  avatar VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE user_detail (
+  id INT NOT NULL AUTO_INCREMENT,
+  address VARCHAR(200),
+  lat VARCHAR(100),
+  lon VARCHAR(100),
+  user_id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE logistics (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100),
+  cost FLOAT NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE product_category (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  parent_id INT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (parent_id) REFERENCES product_category(id)
+);
+
+CREATE TABLE products (
+  id INT NOT NULL AUTO_INCREMENT,
+  imageurl VARCHAR(100) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  product_condition TINYINT(1) NOT NULL DEFAULT 1,
+  min_price FLOAT NOT NULL,
+  next_bid FLOAT NOT NULL,
+  expired DATETIME NOT NULL,
+  product_category INT NOT NULL,
+  user_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (product_category) REFERENCES product_category(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE transaction_bid (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  product_id INT NOT NULL,
+  price FLOAT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+CREATE TABLE winner_bid (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  product_id INT NOT NULL,
+  message VARCHAR(100) NULL,
+  price FLOAT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+CREATE TABLE payments (
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  product_id INT NOT NULL,
+  logistic_id INT NULL,
+  total FLOAT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (product_id) REFERENCES products(id),
+  FOREIGN KEY (logistic_id) REFERENCES logistics(id)
+);
+

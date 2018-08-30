@@ -25,7 +25,9 @@ GET url://products
       },
       "seller": {
         "id": 2,
-        "name": "Isfhani"
+        "name": "Isfhani",
+        "email": "",
+        "avatar": ""
       },
       "created_at": "2018-08-30 20:18:21",
       "updated_at": "2018-08-30 20:18:21",

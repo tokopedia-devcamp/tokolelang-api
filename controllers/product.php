@@ -34,6 +34,7 @@ class Product extends MasterApi {
         ON p.user_id = u.id
       INNER JOIN product_category c
         ON p.product_category = c.id
+      WHERE p.status = 0
       ORDER BY created_at DESC
     ";
 
@@ -63,6 +64,7 @@ class Product extends MasterApi {
         ],
         "created_at" => $result['created_at'],
         "updated_at" => $result['updated_at'],
+        "status" => $result['status'],
         "total_bidder" => (int) $result['total_bidder']
       ];
     }

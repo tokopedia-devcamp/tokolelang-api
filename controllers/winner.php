@@ -32,9 +32,42 @@ class Winner extends MasterApi {
     $p->bindParam(":price", $reqs['price']);
     $p->execute();
 
+    $p2 = $this->dbh->prepare("UPDATE products SET status = 1 WHERE id = :product_id");
+    $p2->bindParam(":product_id", $reqs['product_id']);
+    $p2->execute();
+
     Flight::json([
       "code" => 200,
       "message" => "OK"
     ]);
+  }
+
+  public function getWinnerByUserId($user_id){
+    $p = $this->dbh->prepare("SELECT * FROM winner_bid WHERE user_id = :user_id");
+    $p->bindParam(":user_id", $user_id);
+    $p->execute();
+
+    $show = [
+      "code" => 200,
+      "message" => "OK",
+      "user_id" => $user_id,
+      "data" => []
+    ];
+
+    $results = $p->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach($results as $result){
+      $show['data'][] = [
+        "id" => $result['id'],
+        "product" => [
+          "id" => $result['product_id']
+        ],
+        "message" => $result['message'],
+        "price"   => $result['price'],
+        "created_at" => $result['created_at']
+      ];
+    }
+
+    Flight::json($show);
   }
 }

@@ -27,6 +27,13 @@ class MasterApi {
     ]);
   }
 
+  public function send400($message = "Bad Request"){
+    Flight::json([
+      "code" => 400,
+      "message" => $message
+    ]);
+  }
+
   // Check whether database connection
   // is established or not
   public function isConnected(){

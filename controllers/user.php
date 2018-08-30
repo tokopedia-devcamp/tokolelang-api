@@ -67,24 +67,26 @@ class User extends MasterApi {
         
         $user_data = $this->dbh->prepare($query);
         $user_data->execute();
+        $user_data = $user_data->fetchAll();
+
+        $total_data = count($user_data);
         
         // Email not exist
-        if(count($user_data->fetchAll()) == 0){
+        if($total_data == 0){
             Flight::json([
                 "code" => 400,
                 "message" => "email tidak terdaftar"
             ]);
+            return;
         }
 
-        $row = $user_data->fetch();
-        
-        // Wrong password 
+        $row = $user_data[0];
         if(!password_verify($password, $row["password"])){
             Flight::json([
                 "code" => 400,
                 "message" => "password salah"
             ]);
-        } else{
+        } else {
             Flight::json([
                 "code" => 200,
                 "message" => "login success",

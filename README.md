@@ -4,9 +4,10 @@ Group #3
 Built with [Flight Micro-Framework](http://flightphp.com/)
 
 ### Requests
-#### Products
+#### Products and Products Won
 ```
 GET url://products
+GET url://products_won
 {
   "code": 200,
   "message": "OK",

@@ -141,18 +141,10 @@ GET url:://tr/userid/:userid/:productid
         "price": "13000",
         "created_at": "2018-08-30 12:12:00",
         "updated_at": "2018-08-30 18:35:13"
-    },
-    {
-        "id": "19",
-        "user_id": "1",
-        "product_id": "2",
-        "price": "23000",
-        "created_at": "2018-08-30 08:52:00",
-        "updated_at": "2018-08-30 08:52:00"
     }, {...}
 ]
 
-GET PRODUCT BIDDER LIST
+###GET PRODUCT BIDDER LIST
 
 GET url:://tr/productid/@id
 [
@@ -163,45 +155,5 @@ GET url:://tr/productid/@id
         "price": "20000",
         "created_at": "2018-08-30 12:00:00",
         "updated_at": "2018-08-30 18:35:13"
-    },
-    {
-        "id": "12",
-        "user_id": "2",
-        "product_id": "1",
-        "price": "25000",
-        "created_at": "2018-08-30 12:05:00",
-        "updated_at": "2018-08-30 18:35:13"
-    },
-    {
-        "id": "13",
-        "user_id": "3",
-        "product_id": "1",
-        "price": "30000",
-        "created_at": "2018-08-30 12:10:00",
-        "updated_at": "2018-08-30 18:35:13"
-    },
-    {
-        "id": "16",
-        "user_id": "1",
-        "product_id": "1",
-        "price": "45000",
-        "created_at": "2018-08-30 19:15:03",
-        "updated_at": "2018-08-30 19:15:03"
-    },
-    {
-        "id": "17",
-        "user_id": "1",
-        "product_id": "1",
-        "price": "21000",
-        "created_at": "2018-08-30 11:24:49",
-        "updated_at": "2018-08-30 11:24:49"
-    },
-    {
-        "id": "18",
-        "user_id": "2",
-        "product_id": "1",
-        "price": "21000",
-        "created_at": "2018-08-30 08:25:47",
-        "updated_at": "2018-08-30 08:25:47"
-    }
+    }, {...}
 ]

@@ -175,12 +175,25 @@ GET PRODUCT BIDDER LIST
 GET url:://tr/productid/@id
 [
     {
-        "id": "11",
-        "user_id": "1",
-        "product_id": "1",
-        "price": "20000",
-        "created_at": "2018-08-30 12:00:00",
-        "updated_at": "2018-08-30 18:35:13"
+       "transaction_id": 16,
+       "price": 45000,
+       "created_at": "2018-08-30 19:15:03",
+       "updated_at": "2018-08-30 19:15:03",
+       "product": {
+           "product_id": 1,
+           "imageurl": "http://cdn.onlinewebfonts.com/svg/img_231353.png",
+           "name": "Uang 100 ribu seri sama",
+           "next_bid": 5000,
+           "product_condition": 1,
+           "min_price": 15000,
+           "expired": "2018-09-02 00:00:00",
+           "total_bidder": "1"        
+       },
+       "bidder": {
+           "user_id": 1,
+           "email": "bastian@example.com",
+           "avatar": "https://cdn.iconscout.com/icon/free/png-512/avatar-372-456324.png"
+       }
     }, {...}
 ]
 ```

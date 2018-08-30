@@ -3,7 +3,7 @@ require_once "./controllers/user.php";
 
 $users = new User();
 
-Flight::route('GET /api/getusers', [$users, 'getUsers']);
-Flight::route('GET /api/getuser/@id', [$users, 'getUserById']);
+Flight::route('GET /api/user/getusers', [$users, 'getUsers']);
+Flight::route('GET /api/user/getuser/@id', [$users, 'getUserById']);
 
-Flight::route('POST /api/login/', [$users, 'login']);
+Flight::route('POST /api/user/login/', [$users, 'login']);

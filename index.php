@@ -3,30 +3,20 @@
 require_once "flight/Flight.php";
 require_once "./constants.php";
 
+// Include Global API
 require_once "./controllers/api.php";
-require_once "./controllers/user.php";
-require_once "./controllers/home.php";
-require_once "./controllers/product.php";
-require_once "./controllers/transaction_bid.php";
 
+// Global API
 $master = new MasterApi();
-$users = new User();
-$home = new Home();
-$product = new Product();
-$trans = new Transaction();
 
-Flight::route('GET /', [$home, 'getHome']);
 
+// Routes
+require_once "./routes/home.php";
+require_once "./routes/user.php";
+require_once "./routes/product.php";
+require_once "./routes/transaction.php";
+
+// Global Route
 Flight::route('GET /api', [$master, 'send404']);
-
-// Product
-Flight::route('GET /products', [$product, 'getProducts']);
-
-Flight::route('GET /api/gettransbyid/@id', [$trans, 'getByProductId']);
-
-Flight::route('GET /api/getusers', [$users, 'getUsers']);
-Flight::route('GET /api/getuser/@id', [$users, 'getUserById']);
-
-Flight::route('POST /api/login/@email/@password', [$users, 'login']);
 
 Flight::start();

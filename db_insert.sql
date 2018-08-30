@@ -23,3 +23,6 @@ INSERT INTO transaction_bid (user_id, product_id, price, created_at) VALUES
 (3, 1, 30000, '2018-08-30 12:10:00'),
 (3, 2, 13000, '2018-08-30 12:12:00'),
 (4, 2, 20000, '2018-08-30 12:20:00');
+
+INSERT INTO logistics (name, cost) VALUES
+('JNE', 5000), ('J&T', 4500), ('Tiki', 4000), ('Pos Indonesia', 4300);

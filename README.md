@@ -71,8 +71,6 @@ Return on success
 
 #### Product Category
 ```
-#### Product Category
-```
 GET url://product_category
 {
   "code": 200,
@@ -126,18 +124,19 @@ Return on success
 ```
 
 #### Transaction Bid
-```
-POST TRANSACTION
 
+POST TRANSACTION
+```
 GET url://tr/postbid/
 Return on success
 {
     "code": 200,
     "message": "success"
 }
+```
 
 GET BID WINNER ON PRODUCT ID
-
+```
 GET url://tr/bidwinner/:id
 return on failure to found data
 {
@@ -154,9 +153,10 @@ return on found data
     "created_at": "2018-08-30 09:39:02",
     "updated_at": "2018-08-30 09:39:02"
 }
-``
-GET USER'S BID LIST ON PRODUCT
+```
 
+GET USER'S BID LIST ON PRODUCT
+```
 GET url:://tr/userid/:userid/:productid
 [
     {
@@ -168,9 +168,10 @@ GET url:://tr/userid/:userid/:productid
         "updated_at": "2018-08-30 18:35:13"
     }, {...}
 ]
+```
 
 GET PRODUCT BIDDER LIST
-
+```
 GET url:://tr/productid/@id
 [
     {
@@ -182,3 +183,40 @@ GET url:://tr/productid/@id
         "updated_at": "2018-08-30 18:35:13"
     }, {...}
 ]
+```
+
+#### Winner Bid
+```
+POST url://winner
+
+Winner POST Request
+{
+  "user_id": 0,
+  "product_id": 0,
+  "message": "Hello world",
+  "price": 0,
+}
+
+Winner POST Response
+{
+  "code": 200,
+  "message": "OK"
+}
+```
+
+#### Logistics
+```
+GET url://logistics
+{
+  "code": 200,
+  "message": "OK",
+  "data": [
+    {
+      "id": 0,
+      "name": "",
+      "price": 0
+    },
+    {...}
+  ]
+}
+```

@@ -114,7 +114,7 @@ class Product extends MasterApi {
     file_put_contents($upload_url, $img_data);
 
     $p = $this->dbh->prepare("INSERT INTO products (imageurl, name, product_condition, min_price, next_bid, expired, product_category, user_id) VALUES ('$image_url', :name, :product_condition, :min_price, :next_bid, :expired, :product_category, :user_id)");
-    // :name, :product_condition, :min_price, :next_bid, :expired, :product_category, :user_id
+
     $p->bindParam(":name", $reqs['name']);
     $p->bindParam(":product_condition", $reqs['product_condition']);
     $p->bindParam(":min_price", $reqs['min_price']);

@@ -12,6 +12,7 @@ class MasterApi {
         "code" => 500,
         "message" => "Internal Server Error"
       ]);
+      die();
     }
   }
 

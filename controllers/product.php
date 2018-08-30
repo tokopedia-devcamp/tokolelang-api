@@ -24,6 +24,7 @@ class Product extends MasterApi {
         u.avatar,
         p.created_at,
         p.updated_at,
+        p.status,
         (
           SELECT COUNT(DISTINCT(user_id))
           FROM transaction_bid
@@ -34,6 +35,7 @@ class Product extends MasterApi {
         ON p.user_id = u.id
       INNER JOIN product_category c
         ON p.product_category = c.id
+      WHERE p.status = 0
       ORDER BY created_at DESC
     ";
 
@@ -63,6 +65,7 @@ class Product extends MasterApi {
         ],
         "created_at" => $result['created_at'],
         "updated_at" => $result['updated_at'],
+        "status" => (int) $result['status'],
         "total_bidder" => (int) $result['total_bidder']
       ];
     }

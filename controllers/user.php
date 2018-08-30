@@ -135,8 +135,6 @@ class User extends MasterApi {
         if(!parent::isConnected()){
             $this->send404($this->notConnected);
         }
-
-        // password_verify($input, $password_di_db)
         
         $query = "SELECT * FROM " . $this->table_name . " WHERE email='" . $email . "'";
 
@@ -146,16 +144,13 @@ class User extends MasterApi {
         
         $row = $user_data->fetch();
 
-        // echo $row;
-
+        // Wrong password 
         if(!password_verify($password, $row["password"])){
             Flight::json([
                 "code" => 400,
-                "message" => "not authorised"
+                "message" => "not authorized"
             ]);
         }
-
-        // Flight::json($this->parseToJson($user_data));
         
         Flight::json([
             "code" => 200,

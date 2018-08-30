@@ -65,6 +65,11 @@ class Transaction extends MasterApi {
         
         $user_data = $this->dbh->prepare($query);
         $user_data->execute();
+
+        Flight::json([
+            "code" => 200,
+            "message" => "success"
+        ]);
     }
 
     public function getBidWinner($id){

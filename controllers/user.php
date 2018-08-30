@@ -72,34 +72,34 @@ class User extends MasterApi {
         $total_data = count($user_data);
         
         // Email not exist
-        if($total_data == 0){
-            Flight::json([
-                "code" => 400,
-                "message" => "email tidak terdaftar"
-            ]);
-            return;
-        }
+        // if($total_data == 0){
+        //     Flight::json([
+        //         "code" => 400,
+        //         "message" => "email tidak terdaftar"
+        //     ]);
+        //     return;
+        // }
 
-        $row = $user_data[0];
-        if(!password_verify($password, $row["password"])){
-            Flight::json([
-                "code" => 400,
-                "message" => "password salah"
-            ]);
-        } else {
-            Flight::json([
-                "code" => 200,
-                "message" => "login success",
-                "data" => [
-                    "id" => $row["id"],
-                    "name" => $row["name"],
-                    "email" => $row["email"],
-                    "avatar" => $row["avatar"],
-                    "created_at" => $row["created_at"],
-                    "updated_at" => $row["updated_at"]
-                ]
-            ]);
-        }
+        // $row = $user_data[0];
+        // if(!password_verify($password, $row["password"])){
+        //     Flight::json([
+        //         "code" => 400,
+        //         "message" => "password salah"
+        //     ]);
+        // } else {
+        //     Flight::json([
+        //         "code" => 200,
+        //         "message" => "login success",
+        //         "data" => [
+        //             "id" => $row["id"],
+        //             "name" => $row["name"],
+        //             "email" => $row["email"],
+        //             "avatar" => $row["avatar"],
+        //             "created_at" => $row["created_at"],
+        //             "updated_at" => $row["updated_at"]
+        //         ]
+        //     ]);
+        // }
         
         
     }

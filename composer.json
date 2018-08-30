@@ -1,0 +1,11 @@
+{
+    "name": "haz/tokolelang",
+    "description": "RESTful web to support TokoLelang Mobile App",
+    "authors": [
+        {
+            "name": "fannyhasbi",
+            "email": "fnyhsbi@gmail.com"
+        }
+    ],
+    "require": {}
+}

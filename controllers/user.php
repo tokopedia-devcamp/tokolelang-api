@@ -130,4 +130,44 @@ class User extends MasterApi {
 
         return $datas;
     }
+
+    public function login($email, $password){
+        if(!parent::isConnected()){
+            $this->send404($this->notConnected);
+        }
+
+        // password_verify($input, $password_di_db)
+        
+        $query = "SELECT * FROM " . $this->table_name . " WHERE email='" . $email . "'";
+
+        echo $query;
+        $user_data = $this->dbh->prepare($query);
+        $user_data->execute();
+        
+        $row = $user_data->fetch();
+
+        // echo $row;
+
+        if(!password_verify($password, $row["password"])){
+            Flight::json([
+                "code" => 400,
+                "message" => "not authorised"
+            ]);
+        }
+
+        // Flight::json($this->parseToJson($user_data));
+        
+        Flight::json([
+            "code" => 200,
+            "message" => "login success",
+            "data" => [
+                "name" => $row["name"],
+                "email" => $row["email"],
+                "avatar" => $row["avatar"],
+                //"user_detail_id" => $row["=>ail_id"],
+                "created_at" => $row["created_at"],
+                "updated_at" => $row["updated_at"],
+            ]
+        ]);
+    }
 }

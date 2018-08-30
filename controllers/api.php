@@ -11,7 +11,7 @@ class MasterApi {
     
     try {
       $this->dbh = new PDO("mysql:host=$host;dbname=$database", $uname, $pass);
-      echo 'Terkoneksi dengan database';
+      // echo 'Terkoneksi dengan database';
     }
     catch(PDOException $e){
       Flight::json([

@@ -12,7 +12,10 @@ $home = new Home();
 Flight::route('GET /', [$home, 'getHome']);
 
 Flight::route('GET /api', [$master, 'send404']);
+
 Flight::route('GET /api/getusers', [$users, 'getUsers']);
 Flight::route('GET /api/getuser/@id', [$users, 'getUserById']);
+
+Flight::route('POST /api/login/@email/@password', [$users, 'login']);
 
 Flight::start();

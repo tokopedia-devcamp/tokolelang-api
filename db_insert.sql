@@ -1,7 +1,7 @@
 INSERT INTO users (name, email, password, avatar) VALUES
 ('Sebastion Mualim', 'bastian@example.com', '$2y$10$uem1h0upcxlsttLiI5PBYuVTpoKVP.Nf0H/E3MB4roplPuxzZtWYi', 'https://cdn.iconscout.com/icon/free/png-512/avatar-372-456324.png'),
 ('Isfhani', 'isfhani@example.com', '$2y$10$uem1h0upcxlsttLiI5PBYuVTpoKVP.Nf0H/E3MB4roplPuxzZtWYi', 'https://cdn.iconscout.com/icon/free/png-512/avatar-372-456324.png'),
-('Hasbi', 'hasbi@example.com', '$2y$10$uem1h0upcxlsttLiI5PBYuVTpoKVP.Nf0H/E3MB4roplPuxzZtWYi', 'https://cdn.iconscout.com/icon/free/png-512/avatar-372-456324.png');
+('Hasbi', 'hasbi@example.com', '$2y$10$uem1h0upcxlsttLiI5PBYuVTpoKVP.Nf0H/E3MB4roplPuxzZtWYi', 'https://cdn.iconscout.com/icon/free/png-512/avatar-372-456324.png'),
 ('Agas', 'agas@example.com', '$2y$10$uem1h0upcxlsttLiI5PBYuVTpoKVP.Nf0H/E3MB4roplPuxzZtWYi', 'https://cdn.iconscout.com/icon/free/png-512/avatar-372-456324.png');
 
 INSERT INTO user_detail (address, lat, lon, user_id) VALUES

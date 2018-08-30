@@ -20,10 +20,10 @@ class MasterApi {
     $this->dbh = null;
   }
 
-  protected function generateAlamat(){
+  protected function generateAddress(){
     $a = "";
     $n = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-    for($i=0;$i<50;$i++){
+    for($i=0;$i<10;$i++){
       $a .= $n[rand(0, strlen($n) - 1)];
     }
 

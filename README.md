@@ -12,21 +12,46 @@ GET url://products
   "message": "OK",
   "data": [
     {
-      "product_id": "2",
-      "imageurl": "http://cdn.onlinewebfonts.com/svg/img_231353.png",
-      "name": "Uang 10 ribu seri unik",
-      "product_condition": "1",
-      "min_price": "5000",
-      "next_bid": "3000",
-      "expired": "2018-09-03 00:00:00",
-      "category": "Uang",
-      "seller_id": "1",
-      "seller_name": "Sebastion Mualim",
-      "created_at": "2018-08-30 12:55:44",
-      "updated_at": "2018-08-30 12:55:44"
-    },
-    {...}
+      "product_id": 4,
+      "imageurl": "http://devcamp3.000webhostapp.com/uploads/p/tokolelang-yXlh8yCBqGxV4Zr1L6PRq6ysdtzpqGxrrtHaK00WkGpZn",
+      "name": "Sandal Antik",
+      "next_bid": 2000,
+      "product_condition": 1,
+      "min_price": 10000,
+      "expired": "2018-08-31 20:00:00",
+      "category": {
+        "id": 1,
+        "name": "Barang Antik"
+      },
+      "seller": {
+        "id": 2,
+        "name": "Isfhani"
+      },
+      "created_at": "2018-08-30 20:18:21",
+      "updated_at": "2018-08-30 20:18:21",
+      "total_bidder": "0"
+    }
   ]
+}
+```
+
+```
+POST url://products
+PNG and JPG only
+
+Return on type denied
+{
+  "code": 400,
+  "message": "Bad Request"
+}
+
+Return on success
+{
+  "code": 200,
+  "message": "OK",
+  "data": {
+    "image_url": "http://devcamp3.000webhostapp.com/uploads/p/tokolelang-N4eR7yixTj.png
+  }
 }
 ```
 

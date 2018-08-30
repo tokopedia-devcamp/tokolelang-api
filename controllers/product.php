@@ -85,16 +85,47 @@ class Product extends MasterApi {
       }
     }
 
-    // to do
-    // $p = $this->dbh->prepare("INSERT INTO products (imageurl, name, product_condition, min_price, next_bid, expired, product_category, user_id) VALUES ('$image_url', :name, :product_condition, :min_price, :next_bid, :expired, :product_category, :user_id)");
-    // $p->bindParam(":nim",$nim);
-    // $p->bindParam(":nama",$nama);
-    // $p->bindParam(":jeniskelamin",$jenisKelamin);
-    // $p->execute();
+    $allowed = array(
+      'image/jpeg',
+      'image/png'
+    );
+
+    $img_data = base64_decode($reqs['encoded_image']);
+    $f = finfo_open();
+    $mime_type = finfo_buffer($f, $img_data, FILEINFO_MIME_TYPE);
+
+    if(!in_array($mime_type, $allowed)){
+      $this->send404();
+      return;
+    }
+
+    $rand_generated = $this->generateAddress();
+
+    $image_url = WEB_URL .'uploads/p/'. $rand_generated;
+    $image_url = $mime_type == 'image/jpeg' ? $image_url.'.jpg' : $image_url.'.png';
+    
+    $upload_url = './uploads/p/'. $rand_generated;
+    $upload_url = $mime_type == 'image/jpeg' ? $upload_url.'.jpg' : $upload_url.'.png';
+
+    file_put_contents($upload_url, $img_data);
+
+    $p = $this->dbh->prepare("INSERT INTO products (imageurl, name, product_condition, min_price, next_bid, expired, product_category, user_id) VALUES ('$image_url', :name, :product_condition, :min_price, :next_bid, :expired, :product_category, :user_id)");
+    // :name, :product_condition, :min_price, :next_bid, :expired, :product_category, :user_id
+    $p->bindParam(":name", $reqs['name']);
+    $p->bindParam(":product_condition", $reqs['product_condition']);
+    $p->bindParam(":min_price", $reqs['min_price']);
+    $p->bindParam(":next_bid", $reqs['next_bid']);
+    $p->bindParam(":expired", $reqs['expired']);
+    $p->bindParam(":product_category", $reqs['product_category']);
+    $p->bindParam(":user_id", $reqs['user_id']);
+    $p->execute();
 
     Flight::json([
       "code" => 200,
-      "message" => "OK"
+      "message" => "OK",
+      "data" => [
+        "image_url" => $image_url
+      ]
     ]);
   }
 }

@@ -63,7 +63,7 @@ class Product extends MasterApi {
         ],
         "created_at" => $result['created_at'],
         "updated_at" => $result['updated_at'],
-        "total_bidder" => $result['total_bidder']
+        "total_bidder" => (int) $result['total_bidder']
       ];
     }
     

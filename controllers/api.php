@@ -2,7 +2,22 @@
 
 class MasterApi {
   protected $dbh = null;
+
   public function __construct(){
+    try {
+      $this->dbh = new PDO("mysql:host=".PROD_DB_HOST.";dbname=".PROD_DB_NAME, PROD_DB_USERNAME, PROD_DB_PASSWORD);
+    }
+    catch(PDOException $e){
+      Flight::json([
+        "code" => 500,
+        "message" => "Internal Server Error"
+      ]);
+    }
+  }
+
+  public function __destruct(){
+    // close connection
+    $this->dbh = null;
     $host  = 'localhost';
     $uname = 'root';
     $pass  = 'selabintana';

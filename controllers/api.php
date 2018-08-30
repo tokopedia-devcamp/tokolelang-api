@@ -20,6 +20,16 @@ class MasterApi {
     $this->dbh = null;
   }
 
+  protected function generateAlamat(){
+    $a = "";
+    $n = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    for($i=0;$i<50;$i++){
+      $a .= $n[rand(0, strlen($n) - 1)];
+    }
+
+    return 'tokolelang-'.$a;
+  }
+
   public function send404($message = "Not Found"){
     Flight::json([
       "code" => 404,

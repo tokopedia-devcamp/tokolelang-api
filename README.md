@@ -32,7 +32,7 @@ GET url://products
 
 #### User
 ```
-GET url://api/user/login/
+GET url://user/login/
 
 Return on no email address on database
 {

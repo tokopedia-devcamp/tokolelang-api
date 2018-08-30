@@ -24,6 +24,7 @@ class Product extends MasterApi {
         u.avatar,
         p.created_at,
         p.updated_at,
+        p.status,
         (
           SELECT COUNT(DISTINCT(user_id))
           FROM transaction_bid
@@ -64,7 +65,7 @@ class Product extends MasterApi {
         ],
         "created_at" => $result['created_at'],
         "updated_at" => $result['updated_at'],
-        "status" => $result['status'],
+        "status" => (int) $result['status'],
         "total_bidder" => (int) $result['total_bidder']
       ];
     }

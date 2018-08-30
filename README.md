@@ -31,6 +31,7 @@ GET url://products
       },
       "created_at": "2018-08-30 20:18:21",
       "updated_at": "2018-08-30 20:18:21",
+      "status": 0,
       "total_bidder": "0"
     }
   ]
@@ -201,6 +202,29 @@ Winner POST Response
 {
   "code": 200,
   "message": "OK"
+}
+```
+
+GET winner by user_id
+```
+GET url://winner_user/@id
+
+{
+  "code": 200,
+  "message": "OK",
+  "user_id": "2",
+  "data": [
+    {
+      "id": "6",
+      "product": {
+        "id": "1"
+      },
+      "message": "Hello world",
+      "price": "200000",
+      "created_at": "2018-08-30 22:55:26"
+    },
+    {...}
+  ]
 }
 ```
 

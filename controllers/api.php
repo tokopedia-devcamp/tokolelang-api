@@ -4,14 +4,8 @@ class MasterApi {
   protected $dbh = null;
 
   public function __construct(){
-    $host  = 'localhost';
-    $uname = 'root';
-    $pass  = '';
-
-    $database= 'tokolelang';
-    
     try {
-      $this->dbh = new PDO("mysql:host=$host;dbname=$database", $uname, $pass);
+      $this->dbh = new PDO("mysql:host=".PROD_DB_HOST.";dbname=".PROD_DB_NAME, PROD_DB_USERNAME, PROD_DB_PASSWORD);
     }
     catch(PDOException $e){
       Flight::json([

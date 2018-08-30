@@ -10,20 +10,19 @@ class Transaction extends MasterApi {
             $this->send404($this->noConnection);
         }
         
-        $query = "SELECT *
-                FROM " . $this->table_name.
-                " WHERE products_id=" . $id;
+        $query = "SELECT * FROM " . $this->table_name." WHERE product_id=" . $id;
         
         $trans_data = $this->dbh->prepare($query);
         $trans_data->execute();
-
-        if(count($trans_data->fetchAll()) == 0){
+        $trans_data = $trans_data->fetchAll();
+        
+        if(count($trans_data) == 0){
             $message = "product id not exist";
             Flight::json([
                 "code" => 400,
                 "message" => $message
               ]);
-        } else Flight::json(parseAndTransformToJSON($trans_data));
+        } else Flight::json($this->parseExtractedToJson($trans_data));
     }
 
     public function getByUserId($userId, $productId){
@@ -124,5 +123,16 @@ class Transaction extends MasterApi {
             ];
         }
         return $res;
+    }
+
+    public function compressData($trans_data){
+        // $res = [];
+        // foreach($trans_data as $data){
+        //     if(isset($res[$data["user_id"]])){
+
+        //     }else{
+        //         // $res[$data["user_id"]] = 
+        //     }
+        // }
     }
 }

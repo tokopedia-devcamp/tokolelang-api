@@ -1,6 +1,7 @@
 <?php
 
 class MasterApi {
+  protected $dbh = null;
   public function __construct(){
     // $host  = 'localhost';
     // $uname = 'root';
@@ -9,7 +10,7 @@ class MasterApi {
     // $database= 'tokolelang';
     
     // try {
-    //   $dbh = new PDO("mysql:host=$host;dbname=$database", $uname, $pass);
+    //   $this->dbh = new PDO("mysql:host=$host;dbname=$database", $uname, $pass);
     //   echo 'Terkoneksi dengan database';
     // }
     // catch(PDOException $e){
@@ -20,10 +21,17 @@ class MasterApi {
     // }
   }
 
-  public function send404(){
+  public function send404($message = "Not Found"){
     Flight::json([
       "code" => 404,
-      "message" => "Not Found"
+      "message" => $message
     ]);
+  }
+
+  // Check whether database connection
+  // is established or not
+  public function isConnected(){
+    if($this->dbh)return true;
+    return false;
   }
 }

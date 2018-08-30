@@ -4,9 +4,7 @@ class User extends MasterApi {
     private $table_name = 'users';
     private $notConnected = "Cannot connect to database.";
     
-    // Get All User
-    public function getUsers(){
-        // echo 'test';
+    public function getUsers(){    
         if(!parent::isConnected()){
             $this->send404($this->notConnected);
         }
@@ -14,7 +12,7 @@ class User extends MasterApi {
         
         $user_data = $this->dbh->prepare($query);
         $user_data->execute();
-        
+        $user_data = $user_data->fetchAll();
         Flight::json($this->parseToJson($user_data));
     }
 
@@ -27,22 +25,24 @@ class User extends MasterApi {
         // echo $query;
         $user_data = $this->dbh->prepare($query);
         $user_data->execute();
+        $user_data = $user_data->fetchAll();
 
         // If target data isn't found
         // in the database then give
         // 404 return
         
-        if(count($user_data->fetchAll()) == 0){
+        if(count($user_data) == 0){
             $this->send404("Data not found");
+            return;
         }
 
-        Flight::json($user_data->fetchAll());
+        Flight::json($this->parseToJson($user_data));
     }
 
     public function parseToJson($user_data){
 
         $datas = [];
-        foreach ($user_data->fetchAll() as $data) {
+        foreach ($user_data as $data) {
             $datas[] = [
               "name" => $data['name'],
               "email" => $data['email'],

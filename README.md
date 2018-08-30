@@ -25,7 +25,9 @@ GET url://products
       },
       "seller": {
         "id": 2,
-        "name": "Isfhani"
+        "name": "Isfhani",
+        "email": "",
+        "avatar": ""
       },
       "created_at": "2018-08-30 20:18:21",
       "updated_at": "2018-08-30 20:18:21",
@@ -38,6 +40,18 @@ GET url://products
 ```
 POST url://products
 PNG and JPG only
+
+Product POST Request
+{
+  "name": "",
+  "product_condition": 0,
+  "min_price": 0,
+  "next_bid": 0,
+  "expired": "0000-00-00 00:00:00",
+  "product_category": 0,
+  "user_id": 0,
+  "encoded_image": ""
+}
 
 Return on type denied
 {

@@ -71,8 +71,6 @@ Return on success
 
 #### Product Category
 ```
-#### Product Category
-```
 GET url://product_category
 {
   "code": 200,
@@ -126,7 +124,7 @@ Return on success
 ```
 
 #### Transaction Bid
-```
+
 POST TRANSACTION
 ```
 GET url://tr/postbid/
@@ -206,3 +204,19 @@ Winner POST Response
 }
 ```
 
+#### Logistics
+```
+GET url://logistics
+{
+  "code": 200,
+  "message": "OK",
+  "data": [
+    {
+      "id": 0,
+      "name": "",
+      "price": 0
+    },
+    {...}
+  ]
+}
+```

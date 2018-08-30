@@ -22,5 +22,6 @@ require_once "./routes/payment.php";
 
 // Global Route
 Flight::route('GET /api', [$master, 'send404']);
+Flight::route('GET|POST *', [$master, 'send404']);
 
 Flight::start();

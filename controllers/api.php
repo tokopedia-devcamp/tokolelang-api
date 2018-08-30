@@ -2,23 +2,28 @@
 
 class MasterApi {
   protected $dbh = null;
-  public function __construct(){
-    // $host  = 'localhost';
-    // $uname = 'root';
-    // $pass  = '';
 
-    // $database= 'tokolelang';
+  public function __construct(){
+    $host  = 'localhost';
+    $uname = 'root';
+    $pass  = '';
+
+    $database= 'tokolelang';
     
-    // try {
-    //   $this->dbh = new PDO("mysql:host=$host;dbname=$database", $uname, $pass);
-    //   echo 'Terkoneksi dengan database';
-    // }
-    // catch(PDOException $e){
-    //   Flight::json([
-    //     "code" => 500,
-    //     "message" => "Internal Server Error"
-    //   ]);
-    // }
+    try {
+      $this->dbh = new PDO("mysql:host=$host;dbname=$database", $uname, $pass);
+    }
+    catch(PDOException $e){
+      Flight::json([
+        "code" => 500,
+        "message" => "Internal Server Error"
+      ]);
+    }
+  }
+
+  public function __destruct(){
+    // close connection
+    $this->dbh = null;
   }
 
   public function send404($message = "Not Found"){

@@ -69,6 +69,29 @@ Return on success
 }
 ```
 
+#### Product Category
+```
+GET url://product_category
+{
+  "code": 200,
+  "message": "OK",
+  "data": [
+    {
+      "id": 1,
+      "name": "Barang Antik"
+    },
+    {
+      "id": 2,
+      "name": "Uang"
+    },
+    {
+      "id": 3,
+      "name": "Guci"
+    }
+  ]
+}
+```
+
 #### User
 ```
 GET url://user/login/

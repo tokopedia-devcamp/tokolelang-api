@@ -1,2 +1,2 @@
 arsip:
-	zip production.zip ./ -r
+	zip -r production.zip ./ -x *.git*

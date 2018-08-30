@@ -132,4 +132,27 @@ class Product extends MasterApi {
       ]
     ]);
   }
+
+  public function getCategory(){
+    $query = "SELECT * FROM product_category";    
+
+    $show = [
+      "code" => 200,
+      "message" => "OK",
+      "data" => []
+    ];
+
+    $p = $this->dbh->prepare($query);
+    $p->execute();
+    $results = $p->fetchAll();
+
+    foreach($results as $result){
+      $show["data"][] = [
+        "id" => (int) $result['id'],
+        "name" => $result['name']
+      ];
+    }
+
+    Flight::json($show);
+  }
 }

@@ -20,6 +20,8 @@ class Product extends MasterApi {
         c.name AS category,
         p.user_id AS seller_id,
         u.name AS seller_name,
+        u.email,
+        u.avatar,
         p.created_at,
         p.updated_at,
         (
@@ -55,7 +57,9 @@ class Product extends MasterApi {
         ],
         "seller" => [
           "id" => (int) $result['seller_id'],
-          "name" => $result['seller_name']
+          "name" => $result['seller_name'],
+          "email"=> $result['email'],
+          "avatar" => $result['avatar']
         ],
         "created_at" => $result['created_at'],
         "updated_at" => $result['updated_at'],

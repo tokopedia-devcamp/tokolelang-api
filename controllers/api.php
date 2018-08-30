@@ -19,4 +19,11 @@ class MasterApi {
     //   ]);
     // }
   }
+
+  public function send404(){
+    Flight::json([
+      "code" => 404,
+      "message" => "Not Found"
+    ]);
+  }
 }

@@ -233,3 +233,20 @@ GET url://logistics
   ]
 }
 ```
+#### Payment
+```
+POST url://payment
+Request
+{
+  "user_id": 0,
+  "product_id": 0,
+  "logistic_id": 0, // optional
+  "total": 0,
+}
+
+Response
+{
+  "code": 200,
+  "message": "OK"
+}
+```

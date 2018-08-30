@@ -18,6 +18,7 @@ require_once "./routes/product.php";
 require_once "./routes/transaction.php";
 require_once "./routes/winner.php";
 require_once "./routes/logistic.php";
+require_once "./routes/payment.php";
 
 // Global Route
 Flight::route('GET /api', [$master, 'send404']);

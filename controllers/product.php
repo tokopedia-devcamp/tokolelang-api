@@ -1,7 +1,7 @@
 <?php
 
 class Product extends MasterApi {
-  public function getProducts(){
+  private function getAll($status){
     $show = array(
       "code" => 200,
       "message" => "OK",
@@ -35,7 +35,7 @@ class Product extends MasterApi {
         ON p.user_id = u.id
       INNER JOIN product_category c
         ON p.product_category = c.id
-      WHERE p.status = 0
+      WHERE p.status = $status
       ORDER BY created_at DESC
     ";
 
@@ -71,6 +71,14 @@ class Product extends MasterApi {
     }
     
     Flight::json($show);
+  }
+
+  public function getProducts(){
+    $this->getAll((int) 0);
+  }
+
+  public function getProductsWon(){
+    $this->getAll((int) 1);
   }
 
   public function addProduct(){

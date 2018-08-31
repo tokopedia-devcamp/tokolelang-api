@@ -98,6 +98,12 @@ GET url://product_category
 ```
 GET url://user/login/
 
+Request
+{
+  "email":"",
+  "password":""
+}
+
 Return on no email address on database
 {
     "code": 400,
@@ -129,7 +135,14 @@ Return on success
 
 POST TRANSACTION
 ```
-GET url://tr/postbid/
+POST url://tr/postbid/
+Request
+{
+  "user_id":0,
+  "product_id":0,
+  "price":0
+}
+
 Return on success
 {
     "code": 200,
@@ -174,7 +187,7 @@ GET url:://tr/userid/:userid/:productid
 
 GET PRODUCT BIDDER LIST
 ```
-GET url:://tr/productid/@id
+GET url:://tr/productid/:id
 [
     {
        "transaction_id": 16,

@@ -3,6 +3,9 @@ Group #3
 
 Built with [Flight Micro-Framework](http://flightphp.com/)
 
+### Login test
+sebastian@example.com:12345678
+
 ### Requests
 #### Products and Products Won
 ```
